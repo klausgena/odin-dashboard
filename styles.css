@@ -15,7 +15,7 @@ body {
 #container {
     display: grid;
     gap: 5px;
-    grid-template-columns: 28ch 1fr 1fr;
+    grid-template-columns: 0.25fr 0.55fr 0.2fr;
     grid-template-rows: repeat(3);
     grid-template-areas: "sidebar header header"
         "sidebar content content"
@@ -29,6 +29,7 @@ body {
 #sidebar {
     grid-area: sidebar;
     background-color: var(--accent);
+    padding: 1rem;
 }
 
 #content {
@@ -54,6 +55,12 @@ body {
 .log-in {
     display: flex;
 }
+
+#search-and-log-nav>div,
+#personal-nav>div {
+    flex: 50%;
+}
+
 
 .log-in>img {
     height: 2rem;
