@@ -1,12 +1,12 @@
 :root {
     --accent: #95c8e9;
-    --light: #EBF5EA;
+    --light: hsl(115, 35%, 94%);
     --bright: #C1CF44;
     --brighter:  #D7D556;
 }
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: white;
+    background-color: rgb(247, 242, 242);
     color: #4b4848;
     margin: 0;
     padding: 0;
@@ -14,9 +14,8 @@ body {
 
 #container {
     display: grid;
-    gap: 5px;
-    grid-template-columns: 0.25fr 0.55fr 0.2fr;
-    grid-template-rows: repeat(3);
+    grid-template-columns: 250px 1fr 0.5fr;
+    grid-template-rows: min-content min-content min-content;
     grid-template-areas: "sidebar header header"
         "sidebar content content"
         "sidebar content content";
@@ -24,6 +23,7 @@ body {
 
 #header {
     grid-area: header;
+    box-shadow: 0px 5px 10px lightgrey;
 }
 
 #sidebar {
@@ -33,6 +33,7 @@ body {
 }
 
 #content {
+    padding-right: 1rem;
     grid-area: content;
 }
 
@@ -51,44 +52,102 @@ body {
 /* Second level */
 
 #search-and-log-nav,
-#personal-nav,
 .log-in {
     display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 2rem;
+}
+#personal-nav {
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
 }
 
-#search-and-log-nav>div,
-#personal-nav>div {
-    flex: 50%;
+.search-bar {
+    flex: 0 1 50%;
+}
+
+.log-in {
+    flex: 0 1 50%;
 }
 
 
 .log-in>img {
-    height: 2rem;
+    height: 1.7rem;
+}
+
+#greeting {
+    padding-left: 1.5rem;
+    flex: 1 1 60%;
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: min-content min-content;
+    grid-template-areas: "avatar first-p first-p" "avatar second-p second-p";
 }
 
 #greeting>img {
-    height: 3rem;
+    height: 5rem;
+    grid-area: avatar;
+    padding-bottom: 1.7rem;
+}
+
+#greeting>img+p {
+    grid-area: first-p;
+    margin: 0;
+    align-self: flex-end;
+}
+
+#greeting>p+p {
+    margin: 0;
+    grid-area: second-p;
+}
+
+#nav-buttons {
+    /* lay-out */
+    flex: 0 1 40%;
+    display: flex;
+    justify-content: right;
+    padding-right: 3rem;
 }
 
 #content {
     display: grid;
-    gap: 5px;
+    gap: 1rem;
     grid-template-columns: 1fr 1fr 0.5fr;
     grid-template-rows: repeat(2 0.5fr);
     grid-template-areas: "projects projects announcements"
         "projects projects trending";
+    padding-left: 1.5rem;
+}
+
+#content h2 {
+    margin-bottom: 0px;
+}
+
+#projects>h2 {
+    grid-area: h-two;
 }
 
 #projects {
     grid-area: projects;
     display: grid;
-    gap: 5px;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 300px));
-    grid-template-rows: min-content min-content;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    grid-template-rows: min-content min-content min-content;
+    grid-template-areas: "h-two h-two";
 }
 
 #announcements {
     grid-area: announcements;
+    font-size: 1rem;
+}
+div.announcement h3 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+div.announcement p {
+    margin-top: 0px;
 }
 
 #trending {
@@ -99,6 +158,30 @@ body {
     height: 3rem;
 }
 
+.user-card {
+    display: grid;
+    grid-template-columns: 0.3fr 0.7fr;
+    grid-template-rows: min-content min-content;
+    grid-template-areas: "img .." "img ..";
+}
+
+.user-card>img {
+    grid-area: img;
+}
+
+.user-card p {
+    margin: 0;
+}
+
+div.container {
+    margin-top: 1rem;
+    padding-left: 2rem;
+    padding-top: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 5px;
+    background-color: var(--light);
+}
+
 .card,
 .user-card,
 .announcement,
@@ -106,7 +189,92 @@ body {
     background-color: var(--light);
 }
 
+.announcement {
+    border-bottom: 1px solid lightgrey;
+}
+
 .card {
     border-radius: 5px;
     border-left: 5px solid var(--brighter);
+    padding-left: 1rem;
+}
+
+.card>h2 {
+    margin-bottom: 0px;
+}
+
+.card>p {
+    margin-top: 0px;
+}
+
+.icons {
+    text-align: right;
+    padding-right: 1.5rem;
+    padding-bottom: 1rem;
+}
+.icons svg {
+    padding-left: 1rem;
+}
+
+/* fonts and tweaks */
+
+/* SIDEBAR */
+#sidebar {
+    padding-left: 1.5rem;
+    color: white;
+}
+#main-menu, #settings-menu {
+    font-size: 1.2rem;
+}
+
+/* NAVIGATION */
+
+.search-bar {
+    padding-left: 1.5rem;
+    padding-top: 2.5rem;
+    margin: 0;
+}
+
+.search-bar>input {
+    margin-left: 0.5rem;
+    border-radius: 15px;
+    border: 2px solid var(--accent);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.5rem;
+    width: 80%;
+    background-color:  rgb(247, 242, 242);e;
+}
+
+.log-in {
+    padding-top: 2.5rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.log-in p, .log-in img {
+    padding-left: 1.5rem;
+}
+
+.log-in img {
+    padding-bottom: 0.5rem;
+}
+
+#greeting p {
+    padding-left: 1rem;
+}
+
+#greeting>p + p {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#nav-buttons button {
+    border: none;
+    border-radius: 15px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 20px;
+    color: white;
+    background-color: var(--accent);
+    font-size: 0.9rem;
+    margin-left: 1.5rem;   
 }
