@@ -1,0 +1,86 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#container {
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 28ch 1fr 1fr;
+    grid-template-rows: repeat(3);
+    grid-template-areas: "sidebar header header"
+        "sidebar content content"
+        "sidebar content content";
+}
+
+#header {
+    grid-area: header;
+    border: 1px solid red;
+}
+
+#sidebar {
+    grid-area: sidebar;
+    border: 1px solid blue;
+}
+
+#content {
+    grid-area: content;
+    border: 1px solid green;
+}
+
+#sidebar ul {
+    padding: 0;
+}
+
+#sidebar ul li {
+    list-style: none;
+}
+
+#sidebar>div {
+    padding-bottom: 2rem;
+}
+
+/* Second level */
+
+#search-and-log-nav,
+#personal-nav,
+.log-in {
+    display: flex;
+}
+
+.log-in>img {
+    height: 2rem;
+}
+
+#greeting>img {
+    height: 3rem;
+}
+
+#content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.5fr;
+    grid-template-rows: repeat(2 0.5fr);
+    grid-template-areas: "projects projects announcements"
+        "projects projects trending";
+}
+
+#projects {
+    grid-area: projects;
+}
+
+#announcements {
+    grid-area: announcements;
+}
+
+#trending {
+    grid-area: trending;
+}
+
+#trending img {
+    height: 3rem;
+}
+
+.card,
+.user-card,
+.announcement {
+    border: solid 1px black;
+}
